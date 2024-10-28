@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum EventStatusEnum {
-    APPLIED("applied"),
+    REVIEWING("reviewing"),
     OPEN("open"),
     IN_PROGRESS("in progress"),
     CLOSED("closed");

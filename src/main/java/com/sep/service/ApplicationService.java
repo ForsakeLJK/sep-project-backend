@@ -17,7 +17,7 @@ public class ApplicationService {
     public boolean createApplication(CreateApplicationRequest req) {
         EventApplication eventApplication = new EventApplication()
                 .setApplicationId(idGenService.generateId())
-                .setEventStatus(EventStatusEnum.APPLIED)
+                .setEventStatus(EventStatusEnum.REVIEWING)
                 .setEventName(req.getEventName())
                 .setEventDesc(req.getEventDesc());
         applicationRepository.createApplication(eventApplication);
