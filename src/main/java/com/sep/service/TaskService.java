@@ -5,6 +5,7 @@ import com.sep.repository.ApplicationRepository;
 import com.sep.repository.TaskRepository;
 import com.sep.request.AssignTaskRequest;
 import com.sep.request.CommentTaskRequest;
+import com.sep.utils.IdGenerator;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,12 @@ public class TaskService {
     private TaskRepository taskRepository;
 
     @Resource
-    private IdGenService idGenService;
+    private IdGenerator idGenerator;
     @Autowired
     private ApplicationRepository applicationRepository;
 
     public boolean assignTask(AssignTaskRequest req) {
-        long taskId = idGenService.generateId();
+        long taskId = idGenerator.generateId();
 
         Task task = new Task()
                 .setTaskId(taskId)

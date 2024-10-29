@@ -1,10 +1,9 @@
-package com.sep.service;
+package com.sep.utils;
 
-import com.sep.utils.Snowflake;
 import org.springframework.stereotype.Service;
 
 @Service
-public class IdGenService {
+public class IdGenerator {
     private final Snowflake SNOWFLAKE = new Snowflake();
 
     public long generateId() {

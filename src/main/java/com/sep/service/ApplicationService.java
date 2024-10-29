@@ -6,6 +6,7 @@ import com.sep.repository.ApplicationRepository;
 import com.sep.repository.UserRepository;
 import com.sep.request.ChangeStatusRequest;
 import com.sep.request.CreateApplicationRequest;
+import com.sep.utils.IdGenerator;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +19,12 @@ public class ApplicationService {
     @Resource
     private ApplicationRepository applicationRepository;
     @Resource
-    private IdGenService idGenService;
+    private IdGenerator idGenerator;
     @Resource
     private UserRepository userRepository;
 
     public boolean createApplication(CreateApplicationRequest req) {
-        EventApplication eventApplication = new EventApplication().setApplicationId(idGenService.generateId())
+        EventApplication eventApplication = new EventApplication().setApplicationId(idGenerator.generateId())
                 .setEventStatus(EventStatusEnum.REVIEWING)
                 .setEventName(req.getEventName())
                 .setEventDesc(req.getEventDesc())

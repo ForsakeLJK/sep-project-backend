@@ -3,6 +3,7 @@ package com.sep.service;
 import com.sep.enums.RequestStatusEnum;
 import com.sep.model.*;
 import com.sep.repository.RequestRepository;
+import com.sep.utils.IdGenerator;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ public class RequestService {
     private RequestRepository requestRepository;
 
     @Resource
-    private IdGenService idGenService;
+    private IdGenerator idGenerator;
 
     public SepReqListVO getBudgetReqList(String username) {
 
@@ -41,7 +42,7 @@ public class RequestService {
                 .setRequestName(req.getRequestName())
                 .setRequestDesc(req.getRequestDesc())
                 .setApplicationId(Long.parseLong(req.getApplicationId()))
-                .setRequestId(idGenService.generateId())
+                .setRequestId(idGenerator.generateId())
                 .setStatus(RequestStatusEnum.REVIEWING)
                 .setType(req.getType());
 
