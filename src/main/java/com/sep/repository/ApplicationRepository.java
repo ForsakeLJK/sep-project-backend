@@ -42,10 +42,10 @@ public class ApplicationRepository {
         applications.add(
                 new EventApplication()
                         .setApplicationId(123467890L)
-                        .setEventName("test")
-                        .setEventDesc("test")
+                        .setEventName("TestEvent")
+                        .setEventDesc("this is test")
                         .setEventStatus(EventStatusEnum.OPEN)
-                        .setFinancialComment("comment")
+                        .setFinancialComment("test financial comment")
         );
     }
 }
