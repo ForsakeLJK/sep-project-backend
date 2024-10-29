@@ -4,6 +4,7 @@ import com.sep.enums.EventStatusEnum;
 import com.sep.model.*;
 import com.sep.repository.ApplicationRepository;
 import com.sep.repository.UserRepository;
+import com.sep.request.ChangeStatusRequest;
 import com.sep.request.CreateApplicationRequest;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -113,5 +114,10 @@ public class ApplicationService {
             default -> null;
         };
 
+    }
+
+    public boolean changeStatus(ChangeStatusRequest req) {
+        // todo:
+        return false;
     }
 }
