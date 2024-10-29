@@ -2,6 +2,7 @@ package com.sep.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.sep.model.GetApplicationsVO;
+import com.sep.model.ReviewApplicationRequest;
 import com.sep.request.CreateApplicationRequest;
 import com.sep.request.LoginRequest;
 import com.sep.response.LoginResponse;
@@ -39,5 +40,13 @@ public class HomeController {
     @GetMapping("/applications")
     public ResponseEntity<GetApplicationsVO> getApplications(@RequestParam String username) {
         return ResponseEntity.ok(applicationService.getApplications(username));
+    }
+
+    @PostMapping("/reviewApplication")
+    public ResponseEntity<JSONObject> reviewApplication(@RequestBody ReviewApplicationRequest req) {
+        boolean success = applicationService.reviewApplication(req);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("reviewSuccess", success);
+        return ResponseEntity.ok(jsonObject);
     }
 }

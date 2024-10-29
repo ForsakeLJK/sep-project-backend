@@ -11,4 +11,5 @@ public class EventApplication {
     private String eventName;
     private String eventDesc;
     private EventStatusEnum eventStatus;
+    private String currentReviewRole;
 }

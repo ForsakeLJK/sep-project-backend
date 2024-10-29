@@ -17,4 +17,21 @@ public class ApplicationRepository {
     public List<EventApplication> getAllApplications() {
         return new ArrayList<>(applications);
     }
+
+    public EventApplication getById(Long applicationId) {
+        return applications.stream()
+                .filter(application -> application.getApplicationId()
+                        .equals(applicationId))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public void updateApplication(EventApplication application) {
+        deleteById(application.getApplicationId());
+        applications.add(application);
+    }
+
+    public void deleteById(Long applicationId) {
+        applications.removeIf(a -> a.getApplicationId().equals(applicationId));
+    }
 }

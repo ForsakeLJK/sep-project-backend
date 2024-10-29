@@ -34,7 +34,12 @@ public class UserRepository {
                 .setPassword("12345"));
 
         users.add(new User()
-                .setUserRole("REVIEWER")
+                .setUserRole("SCS")
+                .setUserName("SCS")
+                .setPassword("12345"));
+
+        users.add(new User()
+                .setUserRole("AM")
                 .setUserName("AM")
                 .setPassword("12345"));
 
