@@ -35,7 +35,7 @@ public class RequestService {
                 .setSepReqList(sepReqVOList);
     }
 
-    public boolean createReq(CreateBudgetRequest req) {
+    public boolean createReq(CreateSepRequest req) {
 
         SepRequest sepRequest = new SepRequest()
                 .setRequestName(req.getRequestName())

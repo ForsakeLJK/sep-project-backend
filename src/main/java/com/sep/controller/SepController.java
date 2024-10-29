@@ -113,7 +113,7 @@ public class SepController {
     }
 
     @PostMapping("/createReq")
-    public ResponseEntity<JSONObject> createReq(@RequestBody CreateBudgetRequest req) {
+    public ResponseEntity<JSONObject> createReq(@RequestBody CreateSepRequest req) {
         boolean success = requestService.createReq(req);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("createSuccess", success);

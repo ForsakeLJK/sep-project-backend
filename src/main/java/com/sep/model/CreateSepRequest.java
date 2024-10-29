@@ -5,7 +5,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class CreateBudgetRequest {
+public class CreateSepRequest {
     private String requestName;
     private String requestDesc;
     private String applicationId;
