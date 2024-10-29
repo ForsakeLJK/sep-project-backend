@@ -9,4 +9,5 @@ public class ReviewApplicationRequest {
     private String applicationId;
     private String action;
     private String username;
+    private String comment;
 }

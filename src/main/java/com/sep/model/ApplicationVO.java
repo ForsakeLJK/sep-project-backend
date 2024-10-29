@@ -13,6 +13,7 @@ public class ApplicationVO {
     private boolean needReview;
     private boolean showSetStatus;
     private String nextStatus;
+    private String financialComment;
     // todo: tasks
     // todo: create task button
 }

@@ -46,6 +46,7 @@ public class ApplicationService {
                         .setEventStatus(a.getEventStatus().getDesc())
                         .setEventName(a.getEventName())
                         .setNeedReview(user.getUserRole().equals(a.getCurrentReviewRole()))
+                        .setFinancialComment(a.getFinancialComment())
                 )
 
                 .toList();
@@ -87,6 +88,17 @@ public class ApplicationService {
             applicationRepository.updateApplication(app);
             return true;
 
+        } else if ("comment".equals(req.getAction())) {
+            String nextRole = findNextReviewRole(app.getCurrentReviewRole());
+            if (nextRole == null) {
+                app.setEventStatus(EventStatusEnum.OPEN);
+                app.setCurrentReviewRole(null);
+            } else {
+                app.setCurrentReviewRole(nextRole);
+            }
+            app.setFinancialComment(req.getComment());
+            applicationRepository.updateApplication(app);
+            return true;
         }
         return false;
     }

@@ -12,4 +12,5 @@ public class EventApplication {
     private String eventDesc;
     private EventStatusEnum eventStatus;
     private String currentReviewRole;
+    private String financialComment;
 }
