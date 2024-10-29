@@ -117,7 +117,21 @@ public class ApplicationService {
     }
 
     public boolean changeStatus(ChangeStatusRequest req) {
-        // todo:
+        EventApplication app = applicationRepository.getById(Long.valueOf(req.getApplicationId()));
+        if (app == null) {
+            return false;
+        }
+
+        if (EventStatusEnum.OPEN == app.getEventStatus()) {
+            app.setEventStatus(EventStatusEnum.IN_PROGRESS);
+            applicationRepository.updateApplication(app);
+            return true;
+        } else if (EventStatusEnum.IN_PROGRESS == app.getEventStatus()) {
+            app.setEventStatus(EventStatusEnum.CLOSED);
+            applicationRepository.updateApplication(app);
+            return true;
+        }
+
         return false;
     }
 }

@@ -10,4 +10,5 @@ public class AssignTaskRequest {
     private String taskDesc;
     private String username;
     private String employeeName;
+    private String applicationId;
 }
