@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class ApplicationVO {
-    private Long applicationId;
+    private String applicationId;
     private String eventName;
     private String eventDesc;
     private String eventStatus;

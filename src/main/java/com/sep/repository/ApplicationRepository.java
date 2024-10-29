@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class ApplicationRepository {
@@ -20,8 +21,7 @@ public class ApplicationRepository {
 
     public EventApplication getById(Long applicationId) {
         return applications.stream()
-                .filter(application -> application.getApplicationId()
-                        .equals(applicationId))
+                .filter(application -> Objects.equals(applicationId, application.getApplicationId()))
                 .findFirst()
                 .orElse(null);
     }

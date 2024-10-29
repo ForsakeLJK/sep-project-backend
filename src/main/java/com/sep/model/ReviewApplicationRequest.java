@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @Data
 public class ReviewApplicationRequest {
-    private Long applicationId;
+    private String applicationId;
     private String action;
     private String username;
 }

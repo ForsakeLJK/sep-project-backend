@@ -41,7 +41,7 @@ public class ApplicationService {
         List<ApplicationVO> voList = allApplications.stream()
                 .sorted(getComparator(user))
                 .map(a -> new ApplicationVO()
-                        .setApplicationId(a.getApplicationId())
+                        .setApplicationId(String.valueOf(a.getApplicationId()))
                         .setEventDesc(a.getEventDesc())
                         .setEventStatus(a.getEventStatus().getDesc())
                         .setEventName(a.getEventName())
@@ -67,7 +67,7 @@ public class ApplicationService {
             return false;
         }
 
-        EventApplication app = applicationRepository.getById(req.getApplicationId());
+        EventApplication app = applicationRepository.getById(Long.valueOf(req.getApplicationId()));
         if (app == null) {
             return false;
         }
