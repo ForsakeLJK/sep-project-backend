@@ -26,7 +26,8 @@ public class TaskService {
                 .setTaskId(taskId)
                 .setTaskName(req.getTaskName())
                 .setTaskDesc(req.getTaskDesc())
-                .setApplicationId(Long.valueOf(req.getApplicationId()));
+                .setApplicationId(Long.valueOf(req.getApplicationId()))
+                .setAssignee(req.getEmployeeName());
 
         taskRepository.createTask(task);
 

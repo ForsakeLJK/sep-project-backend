@@ -1,6 +1,8 @@
 package com.sep.repository;
 
+import com.sep.enums.EventStatusEnum;
 import com.sep.model.EventApplication;
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -33,5 +35,17 @@ public class ApplicationRepository {
 
     public void deleteById(Long applicationId) {
         applications.removeIf(a -> a.getApplicationId().equals(applicationId));
+    }
+
+    @PostConstruct
+    public void populateApplications() {
+        applications.add(
+                new EventApplication()
+                        .setApplicationId(123467890L)
+                        .setEventName("test")
+                        .setEventDesc("test")
+                        .setEventStatus(EventStatusEnum.OPEN)
+                        .setFinancialComment("comment")
+        );
     }
 }
