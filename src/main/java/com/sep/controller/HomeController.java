@@ -1,6 +1,7 @@
 package com.sep.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sep.model.GetApplicationsVO;
 import com.sep.request.CreateApplicationRequest;
 import com.sep.request.LoginRequest;
 import com.sep.response.LoginResponse;
@@ -33,5 +34,10 @@ public class HomeController {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("createSuccess", success);
         return ResponseEntity.ok(jsonObject);
+    }
+
+    @GetMapping("/applications")
+    public ResponseEntity<GetApplicationsVO> getApplications(@RequestParam String username) {
+        return ResponseEntity.ok(applicationService.getApplications(username));
     }
 }

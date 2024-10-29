@@ -13,4 +13,8 @@ public class ApplicationRepository {
     public void createApplication(EventApplication application) {
         applications.add(application);
     }
+
+    public List<EventApplication> getAllApplications() {
+        return new ArrayList<>(applications);
+    }
 }
