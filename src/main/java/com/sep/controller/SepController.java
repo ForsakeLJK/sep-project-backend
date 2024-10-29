@@ -4,10 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.sep.model.*;
 import com.sep.request.*;
 import com.sep.response.LoginResponse;
-import com.sep.service.ApplicationService;
-import com.sep.service.EmpService;
-import com.sep.service.LoginService;
-import com.sep.service.TaskService;
+import com.sep.service.*;
 import jakarta.annotation.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +25,9 @@ public class SepController {
 
     @Resource
     private TaskService taskService;
+
+    @Resource
+    private RequestService requestService;
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> homePage(@RequestBody LoginRequest req) {
@@ -97,6 +97,42 @@ public class SepController {
         boolean success = taskService.commentTask(req);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("commentSuccess", success);
+        return ResponseEntity.ok(jsonObject);
+    }
+
+    @GetMapping("/budgetReqList")
+    public ResponseEntity<SepReqListVO> getBudgetReqList(@RequestParam String username) {
+        SepReqListVO reqListVO = requestService.getBudgetReqList(username);
+        return ResponseEntity.ok(reqListVO);
+    }
+
+    @GetMapping("/resourceReqList")
+    public ResponseEntity<SepReqListVO> getResourceReqList(@RequestParam String username) {
+        SepReqListVO reqListVO = requestService.getResourceReqList(username);
+        return ResponseEntity.ok(reqListVO);
+    }
+
+    @PostMapping("/createReq")
+    public ResponseEntity<JSONObject> createReq(@RequestBody CreateBudgetRequest req) {
+        boolean success = requestService.createReq(req);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("createSuccess", success);
+        return ResponseEntity.ok(jsonObject);
+    }
+
+    @PostMapping("/changeReqStatus")
+    public ResponseEntity<JSONObject> changeReqStatus(@RequestBody ChangeReqStatus req) {
+        boolean success = requestService.changeStatus(req);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("changeSuccess", success);
+        return ResponseEntity.ok(jsonObject);
+    }
+
+    @PostMapping("/recruitEmp")
+    public ResponseEntity<JSONObject> recruitEmp(@RequestBody RecruitEmpRequest req) {
+        boolean success = empService.addEmp(req);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("recruitSuccess", success);
         return ResponseEntity.ok(jsonObject);
     }
 }

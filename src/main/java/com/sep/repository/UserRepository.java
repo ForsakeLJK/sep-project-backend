@@ -88,4 +88,8 @@ public class UserRepository {
                         .toList())
                 .orElse(new ArrayList<>());
     }
+
+    public void addUser(User user) {
+        users.add(user);
+    }
 }

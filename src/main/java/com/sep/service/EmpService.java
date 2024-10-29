@@ -1,9 +1,6 @@
 package com.sep.service;
 
-import com.sep.model.EmpVO;
-import com.sep.model.GetEmpsVO;
-import com.sep.model.Task;
-import com.sep.model.User;
+import com.sep.model.*;
 import com.sep.repository.TaskRepository;
 import com.sep.repository.UserRepository;
 import jakarta.annotation.Resource;
@@ -35,5 +32,18 @@ public class EmpService {
                 .toList();
 
         return new GetEmpsVO().setEmpList(availableEmps);
+    }
+
+    public boolean addEmp(RecruitEmpRequest req) {
+
+        User user = new User()
+                .setUserRole("Sub")
+                .setPassword("12345")
+                .setDepartment(req.getDepartment())
+                .setUserName(req.getName());
+
+        userRepository.addUser(user);
+
+        return true;
     }
 }
