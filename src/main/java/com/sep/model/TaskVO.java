@@ -11,4 +11,5 @@ public class TaskVO {
     private String taskId;
     private String assignee;
     private String comment;
+    private String eventName;
 }

@@ -19,6 +19,10 @@ public class TaskRepository {
         tasks.add(task);
     }
 
+    public Task getById(Long taskId) {
+        return tasks.stream().filter(t -> t.getTaskId().equals(taskId)).findFirst().orElse(null);
+    }
+
     public List<Task> getTasksByAssignee(String assignee) {
         return Optional.of(tasks.stream()
                         .filter(task -> task.getAssignee().equals(assignee))

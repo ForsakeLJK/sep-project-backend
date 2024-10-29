@@ -1,14 +1,8 @@
 package com.sep.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sep.model.GetApplicationsVO;
-import com.sep.model.GetEmpsVO;
-import com.sep.model.ReviewApplicationRequest;
-import com.sep.model.TaskListVO;
-import com.sep.request.AssignTaskRequest;
-import com.sep.request.ChangeStatusRequest;
-import com.sep.request.CreateApplicationRequest;
-import com.sep.request.LoginRequest;
+import com.sep.model.*;
+import com.sep.request.*;
 import com.sep.response.LoginResponse;
 import com.sep.service.ApplicationService;
 import com.sep.service.EmpService;
@@ -21,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 @RequestMapping("/sep")
-public class HomeController {
+public class SepController {
 
     @Resource
     private LoginService loginService;
@@ -89,6 +83,20 @@ public class HomeController {
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("changeSuccess", success);
+        return ResponseEntity.ok(jsonObject);
+    }
+
+    @GetMapping("/empTaskList")
+    public ResponseEntity<EmpTaskListVO> getEmpTaskList(@RequestParam String username) {
+        EmpTaskListVO empTaskListVO = taskService.getEmpTaskList(username);
+        return ResponseEntity.ok(empTaskListVO);
+    }
+
+    @PostMapping("/commentTask")
+    public ResponseEntity<JSONObject> commentTask(@RequestBody CommentTaskRequest req) {
+        boolean success = taskService.commentTask(req);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("commentSuccess", success);
         return ResponseEntity.ok(jsonObject);
     }
 }
